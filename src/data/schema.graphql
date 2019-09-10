@@ -1,7 +1,4 @@
-import { buildSchema } from 'graphql'
-
-const schema = buildSchema(`
-  """ Estructura objeto Cliente """
+""" Estructura objeto Cliente """
   type Cliente {
     id: ID
     nombre:String
@@ -55,13 +52,15 @@ const schema = buildSchema(`
   type Query {
     """ Obtener un cliente con su id """
     getCliente(id: ID!):Cliente
+    getClientes(limite: Int):[Cliente]
   }
 
   """ Mutatios de Cliente """
   type Mutation {
-    """ Crear Cliente """
+    """ Crear un Cliente """
     createCliente(input:ClienteInput!):Cliente
+    """ Actualizar un Cliente """
+    updateCliente(input:ClienteInput!):Cliente
+    """ Remover un Cliente """
+    removeCliente( id:ID! ):String
   }
-`);
-
-export default schema;
