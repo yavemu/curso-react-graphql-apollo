@@ -5,7 +5,9 @@ import { Link } from 'react-router-dom'
 import { GET_CLIENTES } from '../queries'
 
 const Clientes = () => {
-  const { loading, error, data } = useQuery(GET_CLIENTES);
+  const { loading, error, data, startPolling, stopPolling } = useQuery(GET_CLIENTES, {
+    pollInterval: 1000
+  });
 
   if (loading) return 'Cargando...';
   if (error) return `Error Server: ${error.message}`;
